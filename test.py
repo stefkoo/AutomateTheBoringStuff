@@ -1,8 +1,8 @@
-import shutil, os
+import zipfile,os
+path = r'C:\MyPythonScripts'
+os.chdir(path)
+#Erstellt ZipfileObjekt
+newZip = zipfile.ZipFile('new.zip', 'w')
+newZip.write('spam.txt', compress_type=zipfile.ZIP_DEFLATED)
+newZip.close()
 
-path = r'C:\MyPythonScripts\hello.txt'
-
-dir = r'C:\MyPythonScripts\Test'
-
-
-shutil.copy(path, dir)
