@@ -6,21 +6,20 @@ import os
 import send2trash
 
 
-
 path = r'C:\MyPythonScripts\TestCopyTree'
 
 
 for folderName, subfolders, filenames in os.walk(path):
+    print('The current folder is ' + folderName)
     for subfolder in subfolders:
-        if os.path.getsize(path) > 100000000:
-            print(path)
-        else:
-            continue
+        print('SUBFOLDER OF ' + folderName + ': ' + subfolder)
     for filename in filenames:
-        if os.path.getsize(path) > 100:
-            print(filename)
-        else:
-            print('Test')
-            continue
+        print('FILE INSIDE ' + folderName + ': ' + filename)
+        full_path = os.path.join(folderName, filename)
+        if os.path.getsize(full_path) > 10000:
+            print('THE ABSOULUTE PATH is: ' + str(full_path))
+            #uncomment if you are sure to delete the file
+            send2trash.send2trash(full_path)
+
 
 
